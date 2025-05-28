@@ -23,12 +23,12 @@ export class AppService {
       }
     };
 
-    console.log('Obteniendo token desde:', url, body);
-    
     try {
       const response = await firstValueFrom(
         this.httpService.post(url, body)
       );
+      console.log('log res',response.data);
+      
       return response.data;
     } catch (error) {
       console.error('Error al obtener token:', error.response?.data || error.message);
