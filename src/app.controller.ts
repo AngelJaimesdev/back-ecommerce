@@ -12,6 +12,6 @@ export class AppController {
 
   @Get('generate-token')
   generateToken() {
-    return this.appService.generateToken();
+    return this.appService.getToken();
   }
 }

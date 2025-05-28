@@ -1,15 +1,38 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { HttpService } from '@nestjs/axios';
+import { firstValueFrom } from 'rxjs';
+
 
 @Injectable()
 export class AppService {
+   constructor(private configService: ConfigService,
+    private httpService: HttpService
+   ) {}
   getHello(): string {
     return 'Hello World!';
   }
 
-  generateToken() {
-    const credential = {
-      client: '7w7OVivkvY0nBFZ2-u0g',
-      secret: '4FTEE5GkLnsAiNehAm-z',
+  async getToken() {
+    const url = `${this.configService.get<string>('URL_BACKEND')}/auth-lead/get-token`;
+
+    const body = {
+      credential: {
+        client: this.configService.get<string>('CLIENT'),
+        secret: this.configService.get<string>('SECRET'),
+      }
     };
+
+    console.log('Obteniendo token desde:', url, body);
+    
+    try {
+      const response = await firstValueFrom(
+        this.httpService.post(url, body)
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener token:', error.response?.data || error.message);
+      throw error;
+    }
   }
 }
