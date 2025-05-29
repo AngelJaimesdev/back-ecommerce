@@ -18,8 +18,8 @@ export class AppService {
 
     const body = {
       credential: {
-        client: this.configService.get<string>('CLIENT'),
-        secret: this.configService.get<string>('SECRET'),
+        client: this.configService.get<string>('Client'),
+        secret: this.configService.get<string>('Secret'),
       }
     };
 
