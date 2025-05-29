@@ -41,7 +41,7 @@ export class AppService {
       const status = error.response?.status;
       const data = error.response?.data;
 
-      console.error('🔴 Error al obtener token:', {
+      console.error('Error al obtener token:', {
         status,
         data,
         message: error.message,
