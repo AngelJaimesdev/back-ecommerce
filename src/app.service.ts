@@ -23,6 +23,8 @@ export class AppService {
       }
     };
 
+    console.log('credential', body.credential);
+    
     try {
       const response = await firstValueFrom(
         this.httpService.post(url, body)
