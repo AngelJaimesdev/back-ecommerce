@@ -20,6 +20,9 @@ export class AppService {
       credential: {
         client: this.configService.get<string>('Client'),
         secret: this.configService.get<string>('Secret'),
+      },
+      data: {
+        totalAmount: 100000
       }
     };
 
