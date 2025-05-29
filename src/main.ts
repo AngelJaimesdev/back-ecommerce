@@ -8,7 +8,8 @@ async function bootstrap() {
     'http://localhost:4200',
     'http://127.0.0.1:5501',
     'http://127.0.0.1:5501/index.html',
-    'https://ingangeljaimes.wixsite.com/my-site'
+    'https://ingangeljaimes.wixsite.com/my-site',
+    'https://ingangeljaimes-wixsite-com.filesusr.com'
   ],
   });
   await app.listen(3000);
