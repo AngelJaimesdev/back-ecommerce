@@ -20,6 +20,11 @@ export class AppController {
 
   @Get('proxy-token')
   async proxyToken() {
+    console.log('ENV:', {
+  url: this.configService.get<string>('URL_BACKEND'),
+  client: this.configService.get<string>('CLIENT'),
+  secret: this.configService.get<string>('SECRET'),
+});
     const url = `${this.configService.get<string>('URL_BACKEND')}/auth-lead/get-token`;
 
     const body = {
