@@ -14,7 +14,7 @@ export class AppService {
   }
 
   async getToken() {
-    const url = `${this.configService.get<string>('URL_BACKEND')}/auth-lead/get-token`;
+    const url = `${this.configService.get<string>('URL_BACKEND')}/auth-bop/get-token`;
 
     const body = {
       credential: {
@@ -22,7 +22,24 @@ export class AppService {
         secret: this.configService.get<string>('Secret'),
       },
       data: {
-        totalAmount: 100000
+        orderId: "ORD-20250529-001",
+        totalAmount: 150000,
+        items: [
+          {
+            sku: "SKU-001",
+            name: "Zapatos",
+            price: 75000,
+            quantity: 2
+          },
+          {
+            sku: "SKU-002",
+            name: "carro",
+            price: 25000,
+            quantity: 1
+          }
+        ],
+        callbackUrl: "rrrrr",
+        redirectionUrl: "tttttt"
       }
     };
 
