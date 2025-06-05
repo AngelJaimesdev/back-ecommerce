@@ -52,6 +52,7 @@ export class AppService {
         this.httpService.post(url, body, {
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
           },
           timeout: 8000,
         }),
