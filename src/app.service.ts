@@ -53,7 +53,6 @@ export class AppService {
           headers: {
             'Content-Type': 'application/json',
           },
-          timeout: 5000,
         })
       );
 
