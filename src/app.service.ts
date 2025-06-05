@@ -53,6 +53,7 @@ export class AppService {
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
+            'User-Agent': 'NestJS-Client'
           },
           timeout: 8000,
         }),
