@@ -44,6 +44,8 @@ export class AppService {
     };
 
     console.log('Enviando credenciales:', body.credential);
+    console.log('URL:', url);
+
 
     try {
       const response = await firstValueFrom(
