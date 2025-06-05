@@ -3,12 +3,13 @@ import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 
-
 @Injectable()
 export class AppService {
-  constructor(private configService: ConfigService,
-    private httpService: HttpService
-  ) { }
+  constructor(
+    private configService: ConfigService,
+    private httpService: HttpService,
+  ) {}
+
   getHello(): string {
     return 'Hello World!';
   }
@@ -22,30 +23,29 @@ export class AppService {
         secret: this.configService.get<string>('Secret'),
       },
       data: {
-        orderId: "ORD-20250529-001",
+        orderId: 'ORD-20250529-001',
         totalAmount: 150000,
         items: [
           {
-            sku: "SKU-001",
-            name: "Zapatos",
+            sku: 'SKU-001',
+            name: 'Zapatos',
             price: 75000,
-            quantity: 2
+            quantity: 2,
           },
           {
-            sku: "SKU-002",
-            name: "carro",
+            sku: 'SKU-002',
+            name: 'carro',
             price: 25000,
-            quantity: 1
-          }
+            quantity: 1,
+          },
         ],
-        callbackUrl: "rrrrr",
-        redirectionUrl: "tttttt"
-      }
+        callbackUrl: 'rrrrr',
+        redirectionUrl: 'tttttt',
+      },
     };
 
     console.log('Enviando credenciales:', body.credential);
     console.log('URL:', url);
-
 
     try {
       const response = await firstValueFrom(
@@ -54,7 +54,7 @@ export class AppService {
             'Content-Type': 'application/json',
           },
           timeout: 8000,
-        })
+        }),
       );
 
       console.log('Token recibido:', response.data);
@@ -69,9 +69,11 @@ export class AppService {
         message: error.message,
       });
 
-      throw new Error(`Fallo al obtener token: ${status || ''} ${data?.message || error.message}`);
+      throw new Error(
+        `Fallo al obtener token: ${status || ''} ${
+          data?.message || error.message
+        }`,
+      );
     }
   }
-
-
 }
